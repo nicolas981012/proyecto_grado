@@ -2,7 +2,7 @@
   <style>
     /* En tu archivo styles.css */
 .custom-navbar {
-  background-color: #293737; /* Cambia este valor al color que desees */
+  background-color: #dd4b39; /* Cambia este valor al color que desees */
 }
 
   </style>

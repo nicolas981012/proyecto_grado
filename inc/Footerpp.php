@@ -11,20 +11,20 @@
             left: 50%;
             top: -2px;
             margin-left: -25px;
-            background-color: #293737;
+            background-color: #f60;
             width: 50px;
             text-align: center;
         }
 
         .hr-or {
-            background-color: #293737;
+            background-color: #f60;
             height: 1px;
             margin-top: 0px !important;
             margin-bottom: 0px !important;
         }
 
         footer.nb-footer {
-            background-color: #161113;
+            background-color: #f60;
             
         }
 

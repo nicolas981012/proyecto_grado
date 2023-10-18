@@ -37,7 +37,7 @@ if (isset($_POST['btn_login'])) {
 
 ?>
 <?php 
-include_once 'inc/nav.php';
+
 
 ?>
 
@@ -83,20 +83,30 @@ include_once 'inc/nav.php';
   <!--Sweetalert Plugin --->
   <script src="bower_components/sweetalert/sweetalert.js"></script>
   <style>
+  body{
+    
+  }
   .login-box-body {
     border-radius: 10px; /* Ajusta el valor según tu preferencia */
     box-shadow: 0 0 10px rgba(15, 15, 15, 0.2);
+    height: 450px;
      /* Opcional: agrega una sombra al formulario */
   }
 
   .form-control {
-    border-radius: 5px; /* Ajusta el valor según tu preferencia */
+    border-radius: 5px;
+    font-size: 16px;
+     /* Ajusta el valor según tu preferencia */
   }
   .login-page{
-    background-color: #E0E0E0; /* Establece el color de fondo blanco */
-    border-radius: 10px; /* Ajusta el valor según tus preferencias */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Opcional: agrega una sombra al formulario */
+    background-image: url("img/img6.jpg");
+     /* Establece el color de fondo blanco */
+    background-size: 1800px 900px;
+    background-position: center;
   }
+  .login-box-msg {
+      font-size: 24px; /* Increase the font size for the login message */
+    }
 </style>
 
 
@@ -108,15 +118,16 @@ include_once 'inc/nav.php';
 <body class="hold-transition login-page">
   <div class="login-box">
    
+   
+     
+    <center>
+    <div class="login-box-body">
     <div class="login-logo">
     <center>
   <img src="img/esc.png" class="user-image" >
   </center>
       
     </div>
-     
-    <center>
-    <div class="login-box-body">
       <p class="login-box-msg">INICIO DE SESION</p>
 
       <form action="" method="post" autocomplete="off">
@@ -142,21 +153,21 @@ include_once 'inc/nav.php';
                 </select>
           
         </div>
-        
+        <center>
         <div class="row">
           <!-- /.col -->
           
           <div class="col-xs-6">
             <Br>
-           <center>
-            <button type="submit" class="text-muted text-center btn-block btn btn-primary btn-rect"
+           
+            <button type="submit" class="text-muted btn-block btn btn-primary btn-rect"
               name="btn_login">INGRESAR</button>
-              </center>
+              
               
           </div>
           
         </div>
-        
+        </center>
         <?php
         if (!empty($message)) {
           echo '<script type="text/javascript">
@@ -217,7 +228,5 @@ function mostrarPassword(){
 
 
 </body>
-<?php
-include_once 'inc/Footerpp.php';
-?>
+
 </html>

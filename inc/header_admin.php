@@ -39,7 +39,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 
-    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css">
+    <link rel="stylesheet" href="dist/css/skins/skin-red.min.css">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -62,7 +62,7 @@
 
   </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
 
     <!-- Main Header -->
@@ -86,35 +86,6 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
 
-          <li class="dropdown notifications-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bell"></i>
-                    <span class="label label-warning">0</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">Tienes 10 notificaciones</li>
-                    <li>
-                      <ul class="menu">
-                        <!-- Agregar notificaciones aquí -->
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <!-- Mensajes -->
-                <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope"></i>
-                                <span class="label label-success">0</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">Tienes 4 mensajes nuevos</li>
-                                <li>
-                                    <ul class="menu">
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
