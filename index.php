@@ -107,6 +107,7 @@ if (isset($_POST['btn_login'])) {
   .login-box-msg {
       font-size: 24px; /* Increase the font size for the login message */
     }
+    
 </style>
 
 
@@ -116,6 +117,7 @@ if (isset($_POST['btn_login'])) {
 </head>
 
 <body class="hold-transition login-page">
+
   <div class="login-box">
    
    

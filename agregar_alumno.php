@@ -1,15 +1,14 @@
 <?php
 include_once 'db/connect_db.php';
-include_once 'misc/plugin.php';
 session_start();
 error_reporting(0);
 if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {
-    if ($_SESSION['role'] == "ESTUDIANTE") {
+    if ($_SESSION['role'] == "alumno") {
         include_once 'inc/header_estudiante.php';
     } else {
-        if ($_SESSION['role'] == "DOCENTE") {
+        if ($_SESSION['role'] == "docente") {
             include_once 'inc/header_docente.php';
         } else {
             if ($_SESSION['role'] == "administrador") {

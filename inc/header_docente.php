@@ -36,7 +36,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 
-    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css">
+    <link rel="stylesheet" href="dist/css/skins/skin-red.min.css">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -59,7 +59,7 @@
 
   </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini">
+<body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
 
     <!-- Main Header -->
@@ -178,8 +178,33 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i> CREAR CLASE</a></li>
+              <li><a href="agregar_clase.php"><i class="fa fa-circle-o"></i> CREAR CLASE</a></li>
               <li><a href=""><i class="fa fa-circle-o"></i> MIS CLASES</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="glyphicon glyphicon-wrench"></i> <span>NOTIFICACIONES</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href=""><i class="fa fa-circle-o"></i> AÑADIR NOTIFICACION</a></li>
+              <li><a href=""><i class="fa fa-circle-o"></i> LISTADO NOTIFICACIONES</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="glyphicon glyphicon-wrench"></i> <span>ACTIVIDADES</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href=""><i class="fa fa-circle-o"></i> AÑADIR ACTIVIDAD</a></li>
+              <li><a href=""><i class="fa fa-circle-o"></i> LISTADO ACTIVIDADES</a></li>
+              <li><a href=""><i class="fa fa-circle-o"></i> CALIFICAR ACTIVIDADES</a></li>
             </ul>
           </li>
         </ul>
