@@ -23,6 +23,7 @@ if (isset($_POST['btn_login'])) {
     }elseif ($rol == "docente") {
       $_SESSION['role'] = $rol;
       $_SESSION['username'] = $row['Nombre'];
+      $_SESSION['Cedula'] = $row['idDocente'];
     }
   
    

@@ -179,7 +179,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="agregar_clase.php"><i class="fa fa-circle-o"></i> CREAR CLASE</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> MIS CLASES</a></li>
+              <li><a href="clases.php"><i class="fa fa-circle-o"></i> MIS CLASES</a></li>
             </ul>
           </li>
           <li class="treeview">
@@ -205,6 +205,18 @@
               <li><a href=""><i class="fa fa-circle-o"></i> AÑADIR ACTIVIDAD</a></li>
               <li><a href=""><i class="fa fa-circle-o"></i> LISTADO ACTIVIDADES</a></li>
               <li><a href=""><i class="fa fa-circle-o"></i> CALIFICAR ACTIVIDADES</a></li>
+            </ul>
+          </li>
+          <li class="treeview">
+            <a href="#">
+              <i class="glyphicon glyphicon-wrench"></i> <span>CONTENIDO</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href=""><i class="fa fa-circle-o"></i> AÑADIR CONTENIDO</a></li>
+              <li><a href=""><i class="fa fa-circle-o"></i> LISTADO CONTENIDO</a></li>
             </ul>
           </li>
         </ul>

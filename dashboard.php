@@ -22,9 +22,8 @@ if ($_SESSION['username'] == "") {
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-<section class="content">
-        <section></section>
-  <?php  
+   
+      <?php
   if ($_SESSION['role'] == "administrador")  {?>
     <!-- Main content -->
   <section>
