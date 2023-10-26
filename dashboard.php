@@ -66,7 +66,6 @@ if ($_SESSION['username'] == "") {
           <div class="small-box bg-warning">
             <div class="inner">
               <h3>44</h3>
-
               <p>ACTIVIDADES</p>
             </div>
             <div class="icon">

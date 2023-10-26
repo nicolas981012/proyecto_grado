@@ -1,7 +1,6 @@
 <?php
 include_once 'db/connect_db.php';
 session_start();
-error_reporting(0);
 if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {
@@ -17,8 +16,6 @@ if ($_SESSION['username'] == "") {
         }
     }
 }
-
-error_reporting(0);
 date_default_timezone_set('America/Bogota');
 
 if (isset($_POST['add_contenido'])) {
@@ -28,7 +25,7 @@ if (isset($_POST['add_contenido'])) {
     $tituloconte = $_POST['titulo'];
     $archivoconte = $_POST['archivo'];
     $estadoconte = $_POST['estado'];
-    $videoconte =$_SESSION['video'];
+    $videoconte =$_POST['video'];
     $textoconte = $_POST['texto'];
     $img = $_FILES['archivo']['name'];
     $img_tmp = $_FILES['archivo']['tmp_name'];
@@ -50,7 +47,7 @@ if (isset($_POST['add_contenido'])) {
             
         } else {
             if (move_uploaded_file($img_tmp, $store)) {
-                $clase_img = $img_new;
+                $archivo_img = $img_new;
                 if (!isset($error)) {
 
                     $insert = $pdo->prepare("INSERT INTO contenido(idContenido, Clase_idClase, titulo, 
@@ -61,7 +58,7 @@ if (isset($_POST['add_contenido'])) {
                     $insert->bindParam(':clase', $claseconte);
                     $insert->bindParam(':titulo', $tituloconte);
                     $insert->bindParam(':texto', $textoconte);
-                    $insert->bindParam(':archivo',$archivoconte);
+                    $insert->bindParam(':archivo',$archivo_img);
                     $insert->bindParam(':estado', $estadoconte);
                     $insert->bindParam(':video', $videoconte);
                     
@@ -189,7 +186,7 @@ if (isset($_POST['add_contenido'])) {
                         </div>
                         <div class="form-group">
                             <label for="">VIDEO</label>
-                            <input type="url" class="form-control" name="video" required>
+                            <input type="text" class="form-control" name="video" required>
                         </div>
                         <div class="form-group">
                             <label for="">ARCHIVO</label>

@@ -1,4 +1,7 @@
+<?php
 
+
+?>
 <html>
 
 <head>
@@ -19,7 +22,6 @@
     <script src="dist/js/adminlte.min.js"></script>
     <!-- jQuery 3 -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Bootstrap -->
@@ -29,7 +31,6 @@
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <!-- bootstrap timepicker -->
-    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
     <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -39,8 +40,6 @@
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 
     <link rel="stylesheet" href="dist/css/skins/skin-red.min.css">
-
-    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -62,11 +61,10 @@
     <script src="chartjs/dist/Chart.min.js"></script>
 
   </head>
-  
-<body class="hold-transition skin-red sidebar-mini">
 
+<body class="hold-transition skin-red sidebar-mini">
   <div class="wrapper">
-  
+
     <!-- Main Header -->
     <header class="main-header">
 
@@ -88,41 +86,12 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
 
-          <li class="dropdown notifications-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bell"></i>
-                    <span class="label label-warning">0</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">Tienes 10 notificaciones</li>
-                    <li>
-                      <ul class="menu">
-                        <!-- Agregar notificaciones aquí -->
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <!-- Mensajes -->
-                <li class="dropdown messages-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope"></i>
-                                <span class="label label-success">0</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header">Tienes 4 mensajes nuevos</li>
-                                <li>
-                                    <ul class="menu">
-                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
             <!-- User Account Menu -->
             <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
-                <img src="img/docente.png" class="user-image">
+                <img src="img/estudiante.png" class="user-image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs"></span>
               </a>
@@ -130,7 +99,7 @@
                 
                 <!-- The user image in the menu -->
                 <li class="user-header">
-                  <img src="img/docente.png" class="img-circle" alt="User Image">
+                  <img src="img/estudiante.png" class="img-circle" alt="User Image">
                   <p>
                     <?php echo $_SESSION['username']; ?> - <?php echo $_SESSION['role']; ?>
                     <small class="text-capitalize"><?php echo $_SESSION['username']; ?></small>
@@ -147,7 +116,7 @@
                 </li>
               </ul>
             </li>
-           
+            <!-- Control Sidebar Toggle Button -->
           </ul>
         </div>
       </nav>
@@ -168,19 +137,9 @@
             <!-- Status -->
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
-          
         </div>
-        <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
+       <!-- Sidebar Menu -->
+       <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU PRINCIPAL</li>
 
           <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> <span>PAGINA DE INICIO</span></a></li>
@@ -231,7 +190,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="agregar_contenido.php"><i class="fa fa-circle-o"></i> AÑADIR CONTENIDO</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> LISTADO CONTENIDO</a></li>
+              <li><a href="contenido.php"><i class="fa fa-circle-o"></i> LISTADO CONTENIDO</a></li>
             </ul>
           </li>
         </ul>
@@ -239,42 +198,3 @@
       </section>
       <!-- /.sidebar -->
     </aside>
-
-    <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-
-<!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="bower_components/raphael/raphael.min.js"></script>
-<script src="bower_components/morris.js/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<!-- Slimscroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
