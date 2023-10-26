@@ -40,6 +40,8 @@
 
     <link rel="stylesheet" href="dist/css/skins/skin-red.min.css">
 
+    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -145,10 +147,7 @@
                 </li>
               </ul>
             </li>
-            <!-- Control Sidebar Toggle Button -->
-            <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+           
           </ul>
         </div>
       </nav>
@@ -231,7 +230,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i> AÑADIR CONTENIDO</a></li>
+              <li><a href="agregar_contenido.php"><i class="fa fa-circle-o"></i> AÑADIR CONTENIDO</a></li>
               <li><a href=""><i class="fa fa-circle-o"></i> LISTADO CONTENIDO</a></li>
             </ul>
           </li>
