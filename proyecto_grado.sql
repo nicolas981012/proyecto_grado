@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2023 a las 23:04:58
+-- Tiempo de generación: 26-10-2023 a las 04:19:23
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -94,7 +94,24 @@ CREATE TABLE `clase` (
 --
 
 INSERT INTO `clase` (`idClase`, `Docente_idDocente`, `Nombre`, `Nivel`, `Descripcion`, `Fecha_inicial`, `Fecha_final`, `Imagen`) VALUES
-(1, 1340567890, 'CLASE NUMEROS', 0, 'CLASE DE APRENDIZAJE', '2023-10-24', '2023-11-30', '6538514b02d31.jpg');
+(1, 1340567890, 'CLASE NUMEROS', 0, 'CLASE DE APRENDIZAJE', '2023-10-24', '2023-11-30', '6538514b02d31.jpg'),
+(2, 1340567890, 'abecedario', 0, 'vamos a aprender el ', '2023-10-25', '2023-11-30', '6539a69582cff.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contenido`
+--
+
+CREATE TABLE `contenido` (
+  `idContenido` int(10) UNSIGNED NOT NULL,
+  `Clase_idClase` int(10) UNSIGNED NOT NULL,
+  `titulo` varchar(20) DEFAULT NULL,
+  `contenido_texto` varchar(200) DEFAULT NULL,
+  `archivo` varchar(200) DEFAULT NULL,
+  `estado` int(2) NOT NULL,
+  `video` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -191,7 +208,14 @@ ALTER TABLE `alumno`
 --
 ALTER TABLE `clase`
   ADD PRIMARY KEY (`idClase`),
-  ADD KEY `Clase_FKIndex1` (`Docente_idDocente`);
+  ADD KEY `Clase_FKIndex1` (`Docente_idDocente`) USING BTREE;
+
+--
+-- Indices de la tabla `contenido`
+--
+ALTER TABLE `contenido`
+  ADD PRIMARY KEY (`idContenido`),
+  ADD KEY `contenido_clase` (`Clase_idClase`) USING BTREE;
 
 --
 -- Indices de la tabla `docente`
@@ -235,7 +259,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `clase`
 --
 ALTER TABLE `clase`
-  MODIFY `idClase` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idClase` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluacioninicial`
