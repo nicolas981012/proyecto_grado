@@ -42,7 +42,9 @@ if (isset($_POST['btn_update'])) {
 
     if ($newpass == $confpass) {
 
-      $update = $pdo->prepare("UPDATE $tabla SET Contrasena=:pass WHERE Cedula=:email");
+      $campo=sacarcampo();
+
+      $update = $pdo->prepare("UPDATE $tabla SET Contrasena=:pass WHERE $campo=:email");
 
       $update->bindParam(':pass', $confpass);
       $update->bindParam(':email', $id);
@@ -134,16 +136,26 @@ if (isset($_POST['btn_update'])) {
         
         <!-- /.box-header -->
         <?php
+        function sacarcampo(){
+          $a= $_SESSION['role'];
+          if ($a=="administrador") {
+            return "Cedula";
+          }elseif ($a=="docente") {
+            return "idDocente";
+          }
+        }
         $id = $_SESSION['Cedula'];
-        $select = $pdo->prepare("SELECT * FROM administrador WHERE Cedula='$id'");
+        $tabla= $_SESSION['role'];
+        $campo=sacarcampo();
+        $select = $pdo->prepare("SELECT * FROM $tabla WHERE $campo='$id'");
         $select->execute();
         $row = $select->fetch(PDO::FETCH_OBJ) ?>
         
         <div class="box box-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header bg-black" style="background: url('img/background.jpg') center center;">
-            <h3 class="widget-user-username"><?php echo $row->Nombre, $row->Apellido ?></h3>
-            <h5 class="widget-user-desc">administrador</h5>
+            <h3 class="widget-user-username"><?php echo $row->Nombre, $row->Apellido; ?></h3>
+            <h5 class="widget-user-desc"><?php $tabla= $_SESSION['role']; echo $tabla ?></h5>
           </div>
           <div class="widget-user-image">
             <img class="img-circle" src="img/escudito.png" alt="User Avatar">
@@ -168,7 +180,14 @@ if (isset($_POST['btn_update'])) {
           <div class='detail-text'>
             <label for="name"><strong>DOCUMENTO:</strong></label>
             <span class='text-data'>
-              <?php echo $row->Cedula; ?>
+              <?php 
+              $a= $_SESSION['role'];
+              if ($a=="administrador") {
+                echo $row->Cedula;
+              }elseif ($a=="docente") {
+                echo $row->idDocente;
+              }
+               ?>
             </span><br><br>
             <label for="name"><strong>NOMBRE DE USUARIO:</strong></label>
             <span class='text-data'>

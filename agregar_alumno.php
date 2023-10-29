@@ -126,12 +126,20 @@ if (isset($_POST['add_alum'])) {
                         <div class="form-group">
                             <label for="">GRADO</label><br>
                             <select class="form-control" name="grado" required>
-                            <option value="401">
-                                    CUARTO
-                                </option>
-                                <option value="501">
-                                    QUINTO
-                                </option>
+                            <?php
+                                  $docente =$_SESSION['Cedula'];
+                                $select = $pdo->prepare("SELECT * from grado where estado=1");
+                                $select->execute();
+                                while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row)
+
+                                ?>
+                                    <option value="<?php echo $row['id_grado']; ?>">
+                                        <?php echo $row["Grado_numerico"]; ?>
+                                    </option>
+                                <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">

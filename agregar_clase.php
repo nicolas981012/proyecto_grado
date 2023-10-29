@@ -29,6 +29,7 @@ if (isset($_POST['add_clase'])) {
     $fechai = $_POST['fechainicial'];
     $fechaf = $_POST['fechafinal'];
     $docente =$_SESSION['Cedula'];
+    $grado=$_SESSION['grado'];
     $descripcion = $_POST['descripcion'];
     $img = $_FILES['imagen']['name'];
     $img_tmp = $_FILES['imagen']['tmp_name'];
@@ -53,8 +54,8 @@ if (isset($_POST['add_clase'])) {
                 $clase_img = $img_new;
                 if (!isset($error)) {
 
-                    $insert = $pdo->prepare("INSERT INTO clase(idClase, Docente_idDocente, Nombre, Nivel, Descripcion, Fecha_inicial, Fecha_final, Imagen) 
-                    VALUES (:id,:docente,:nombre,:nivel,:descripcion,:fechai,:fechaf,:imagen)");
+                    $insert = $pdo->prepare("INSERT INTO clase(idClase, Docente_idDocente, Nombre, Nivel, Descripcion, Fecha_inicial, Fecha_final, Imagen,grado) 
+                    VALUES (:id,:docente,:nombre,:nivel,:descripcion,:fechai,:fechaf,:imagen,:grado)");
 
                     $insert->bindParam(':id', $codigoc);
                     $insert->bindParam(':docente', $docente);
@@ -64,6 +65,7 @@ if (isset($_POST['add_clase'])) {
                     $insert->bindParam(':fechai', $fechai);
                     $insert->bindParam(':fechaf', $fechaf);
                     $insert->bindParam(':imagen', $clase_img);
+                    $insert->bindParam(':grado', $grado);
 
                     if ($insert->execute()) {
                         echo '<script type="text/javascript">
@@ -188,6 +190,25 @@ if (isset($_POST['add_clase'])) {
                             <label for="">IMAGEN</label><br>
                             <br>
                             <input type="file" class="input-group" name="imagen" onchange="readURL(this);" required> <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="">GRADO</label><br>
+                            <select class="form-control" name="grado" required>
+                            <?php
+                                  $docente =$_SESSION['Cedula'];
+                                $select = $pdo->prepare("SELECT * from grado where estado=1");
+                                $select->execute();
+                                while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row)
+
+                                ?>
+                                    <option value="<?php echo $row['id_grado']; ?>">
+                                        <?php echo $row["Grado_numerico"]; ?>
+                                    </option>
+                                <?php
+                                }
+                                ?>
+                            </select>
                         </div>
                     </div>
 
