@@ -6,10 +6,10 @@ error_reporting(0);
 if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {
-    if ($_SESSION['role'] == "ESTUDIANTE") {
-        include_once 'inc/header_estudiante.php';
+    if ($_SESSION['role'] == "alumno") {
+        include_once 'inc/header_alumno.php';
     } else {
-        if ($_SESSION['role'] == "DOCENTE") {
+        if ($_SESSION['role'] == "docente") {
             include_once 'inc/header_docente.php';
         } else {
             if ($_SESSION['role'] == "administrador") {

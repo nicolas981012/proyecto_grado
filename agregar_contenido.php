@@ -5,7 +5,7 @@ if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {
     if ($_SESSION['role'] == "alumno") {
-        include_once 'inc/header_estudiante.php';
+        include_once 'inc/header_alumno.php';
     } else {
         if ($_SESSION['role'] == "docente") {
             include_once 'inc/header_docente.php';

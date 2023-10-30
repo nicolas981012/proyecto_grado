@@ -1,12 +1,12 @@
 <?php
 include_once 'db/connect_db.php';
 session_start();
-
+error_reporting(0);
 if ($_SESSION['username'] == "") {
   header('location:index.php');
 } else {
   if ($_SESSION['role'] == "alumno") {
-    include_once 'inc/header_estudiante.php';
+    include_once 'inc/header_alumno.php';
   } else {
     if ($_SESSION['role'] == "docente") {
       include_once 'inc/header_docente.php';
@@ -17,139 +17,149 @@ if ($_SESSION['username'] == "") {
     }
   }
 }
-
-
 ?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+<style>
+    .card {
+      border: 1px solid #d1d1d1;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+    }
 
-  <!-- Preloader -->
+    /* Estilo del encabezado de la tarjeta */
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+      border-bottom: none;
+    }
 
-  <BR></BR>
+    /* Estilo del título en el encabezado */
+    .card-title {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    /* Estilo del cuerpo de la tarjeta */
+    .card-body {
+      padding: 10px;
+    }
+
+    /* Estilo del pie de la tarjeta */
+    .card-footer {
+      background-color: #f8f9fa;
+      text-align: right;
+      padding: 5px 10px;
+    }
+
+    /* Estilo del enlace en el pie de la tarjeta */
+    .card-footer a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Cambia el color del enlace al pasar el cursor */
+    .card-footer a:hover {
+      color: #0056b3;
+    }
+  </style>
   <?php
-  if ($_SESSION['role'] == "docente") { ?>
-    <section class="content">
-      <div class="row">
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>150</h3>
+  $docente = $_SESSION['Cedula'];
+  if ($_SESSION['role'] == "alumno") {
+    echo '<section class="content">';
+    echo '<center>';
+    echo '<h1>' . "MIS CLASES" . '</h1>';
+    echo '</center>';
+    echo '<br>';
+    echo '<div class="row">';
+    // Itera sobre los cursos inscritos y muéstralos en el dashboard
 
-              <p>MIS CLASES</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-success">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>NOTIFICACIONES</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>44</h3>
-              <p>ACTIVIDADES</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>CONTENIDO</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-    </section>
-  <?php
+    $select = $pdo->prepare("SELECT c.Nombre as clase,c.Descripcion as descripcion
+    FROM alumno a
+    join grado b
+    ON a.Grado = b.id_grado
+    join clase c
+    ON b.id_grado=c.grado
+    WHERE a.id_Alumno = $docente");
+    $select->execute();
+    while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+      $cursosinscritos[] = $row;
+    }
+    foreach ($cursosinscritos as $curso) {
+      echo '<div class="col-lg-3 col-6">';
+      echo '<div class="small-box bg-primary">';
+      echo '<div class="inner">';
+      echo '<h3>' . $curso['clase'] . '</h3>';
+      echo '<p>' . $curso['descripcion'] . '</p>';
+      echo '</div>';
+      echo '<div class="icon">';
+      echo '<i class=""></i>';
+      echo '</div>';
+      echo '<a href="#" class="small-box-footer">contenido <i class="fas fa-arrow-circle-right"></i></a>';
+      echo '<a href="#" class="small-box-footer">actividades <i class="fas fa-arrow-circle-right"></i></a>';
+      echo '</div>';
+      echo '</div>';
+    }
+    echo '</div>';
+    echo '</section>';
   }
   ?>
   <?php
-  if ($_SESSION['role'] == "administrador") { ?>
-    <!-- Main content -->
-    <section>
-      <div class="col-md-offset-1 col-md-10">
-        <div class="box box-success">
-          <div class="box-header with-border">
-            <h3 class="box-title">NOTIFICACIONES</h3>
-          </div>
-          <div class="box-body">
-            <div class="col-md-offset-1 col-md-10">
-              <div style="overflow-x:auto;">
-                <table class="table table-striped" id="myBestProduct">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>FECHA</th>
-                      <th>NOMBRE</th>
-                      <th>COREO</th>
-                      <th>ASUNTO</th>
-                      <th>MENSAJE</th>
-                      <th>TELEFONO</th>
-                      <th>CIUDAD</th>
-                    </tr>
+  if ($_SESSION['role'] == "alumno") {
+    echo '<section class="content">';
+    echo '<center>';
+    echo '<h1>' . "NOTIFICACIONES" . '</h1>';
+    echo '</center>';
+    echo '<div class="row">';
 
-                  </thead>
-                  <tbody>
+    // Itera sobre las notificaciones de clases del estudiante
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  <?php
+    $select = $pdo->prepare("SELECT d.Asunto as asunto,d.Mensaje as mensaje,c.Nombre as clase
+    FROM alumno a
+    join grado b
+    ON a.Grado = b.id_grado
+    join clase c
+    ON b.id_grado=c.grado
+    join notificaciones d
+    ON d.Clase_idClase=c.idClase
+    WHERE a.id_Alumno = $docente");
+    $select->execute();
+    while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+      $notificacionesClases[] = $row;
+    }
+    foreach ($notificacionesClases as $notificacion) {
+      echo '<div class="col-lg-4 col-md-6">';
+      echo '<div class="card card-info">';
+      echo '<div class="card-header">';
+      echo '<center>';
+      echo '<h3 class="card-title">' . $notificacion['clase'] . '</h3>';
+      echo '</div>';
+      echo '<div class="card-body">';
+      echo '<p>' . $notificacion['asunto'] . '</p>';
+      echo '<p>' . $notificacion['mensaje'] . '</p>';
+      echo '</div>';
+      echo '<div class="card-footer">';
+      echo '<a href="">Más información</a>';
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+    }
+    echo '</div>';
+    echo '</section>';
   }
-
   ?>
-
 </div>
+
 <!-- Calendar -->
 
 <!-- /.content-wrapper -->
 <script>
   $(document).ready(function() {
-    $('#calendar').fullCalendar({
-      defaultView: 'month'
-    });
-  });
-</script>
-<script>
-  $(document).ready(function() {
     $('#myBestProduct').DataTable();
+    $('.carousel').carousel();
   });
 </script>
 

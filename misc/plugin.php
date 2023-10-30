@@ -41,6 +41,7 @@
     <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="plugins/iCheck/all.css">
+    
     <!-- iCheck 1.0.1 -->
     <script src="plugins/iCheck/icheck.min.js"></script>
     <!-- bootstrap time picker -->
@@ -48,3 +49,4 @@
 
     <!-- chart Js -->
     <script src="chartjs/dist/Chart.min.js"></script>
+    

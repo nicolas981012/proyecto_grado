@@ -924,15 +924,17 @@
   }
 }
 /*
- * Skin: Red
- * ---------
- */
+ /* Estilo del encabezado de la página */
 .skin-red .main-header .navbar {
-  background-color: #dd4b39;
+  background-color: #007BFF;
 }
+
+/* Estilo de los enlaces del menú */
 .skin-red .main-header .navbar .nav > li > a {
-  color: #ffffff;
+  color: #fff;
 }
+
+/* Estilo de los enlaces del menú al pasar el cursor */
 .skin-red .main-header .navbar .nav > li > a:hover,
 .skin-red .main-header .navbar .nav > li > a:active,
 .skin-red .main-header .navbar .nav > li > a:focus,
@@ -941,121 +943,137 @@
 .skin-red .main-header .navbar .nav .open > a:focus,
 .skin-red .main-header .navbar .nav > .active > a {
   background: rgba(0, 0, 0, 0.1);
-  color: #f6f6f6;
+  color: #fff;
 }
-.skin-red .main-header .navbar .sidebar-toggle {
-  color: #ffffff;
-}
-.skin-red .main-header .navbar .sidebar-toggle:hover {
-  color: #f6f6f6;
-  background: rgba(0, 0, 0, 0.1);
-}
+
+/* Estilo del botón de menú desplegable */
 .skin-red .main-header .navbar .sidebar-toggle {
   color: #fff;
 }
+
+/* Estilo del botón de menú desplegable al pasar el cursor */
 .skin-red .main-header .navbar .sidebar-toggle:hover {
-  background-color: #d73925;
+  color: #fff;
+  background-color: #0056B3;
 }
-@media (max-width: 767px) {
-  .skin-red .main-header .navbar .dropdown-menu li.divider {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-  .skin-red .main-header .navbar .dropdown-menu li a {
-    color: #fff;
-  }
-  .skin-red .main-header .navbar .dropdown-menu li a:hover {
-    background: #d73925;
-  }
-}
+
+/* Estilo del logotipo */
 .skin-red .main-header .logo {
-  background-color: #d73925;
-  color: #ffffff;
+  background-color: #007BFF;
+  color: #fff;
   border-bottom: 0 solid transparent;
 }
+
+/* Estilo del logotipo al pasar el cursor */
 .skin-red .main-header .logo:hover {
-  background-color: #d33724;
+  background-color: #0056B3;
 }
+
+/* Estilo del pie de página del usuario */
 .skin-red .main-header li.user-header {
   background-color: #dd4b39;
 }
+
+/* Estilo del encabezado de contenido */
 .skin-red .content-header {
   background: transparent;
 }
+
+/* Estilo del fondo y barra lateral */
 .skin-red .wrapper,
 .skin-red .main-sidebar,
 .skin-red .left-side {
-  background-color: #222d32;
+  background-color: #f8f9fa;
 }
+
+/* Estilo de la información del usuario */
 .skin-red .user-panel > .info,
 .skin-red .user-panel > .info > a {
-  color: #fff;
+  color: #000;
 }
+
+/* Estilo de los títulos de secciones */
 .skin-red .sidebar-menu > li.header {
-  color: #4b646f;
-  background: #1a2226;
+  color: #000;
+  background: #f8f9fa;
 }
+
+/* Estilo de los enlaces del menú */
 .skin-red .sidebar-menu > li > a {
   border-left: 3px solid transparent;
 }
+
+/* Estilo de los enlaces del menú al pasar el cursor */
 .skin-red .sidebar-menu > li:hover > a,
 .skin-red .sidebar-menu > li.active > a,
 .skin-red .sidebar-menu > li.menu-open > a {
-  color: #ffffff;
-  background: #1e282c;
+  color: #fff;
+  background: #007BFF;
 }
+
+/* Estilo de los enlaces del menú activos */
 .skin-red .sidebar-menu > li.active > a {
   border-left-color: #dd4b39;
 }
+
+/* Estilo del menú desplegable */
 .skin-red .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
-  background: #2c3b41;
+  background: #f8f9fa;
 }
+
+/* Estilo de los enlaces de la barra lateral */
 .skin-red .sidebar a {
-  color: #b8c7ce;
+  color: #000;
 }
+
+/* Estilo de los enlaces de la barra lateral al pasar el cursor */
 .skin-red .sidebar a:hover {
   text-decoration: none;
 }
+
+/* Estilo de los enlaces del menú desplegable */
 .skin-red .sidebar-menu .treeview-menu > li > a {
-  color: #8aa4af;
+  color: #000;
 }
+
+/* Estilo de los enlaces del menú desplegable activos y al pasar el cursor */
 .skin-red .sidebar-menu .treeview-menu > li.active > a,
 .skin-red .sidebar-menu .treeview-menu > li > a:hover {
-  color: #ffffff;
+  color: #fff;
 }
+
+/* Estilo del formulario en la barra lateral */
 .skin-red .sidebar-form {
   border-radius: 3px;
   border: 1px solid #374850;
   margin: 10px 10px;
 }
+
+/* Estilo del campo de entrada de texto en el formulario */
 .skin-red .sidebar-form input[type="text"],
 .skin-red .sidebar-form .btn {
   box-shadow: none;
-  background-color: #374850;
+  background-color: #f8f9fa;
   border: 1px solid transparent;
   height: 35px;
 }
-.skin-red .sidebar-form input[type="text"] {
-  color: #666;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 2px;
-}
+
+/* Estilo del campo de entrada de texto en foco y el botón en el formulario */
 .skin-red .sidebar-form input[type="text"]:focus,
 .skin-red .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   background-color: #fff;
-  color: #666;
+  color: #000;
 }
+
+/* Estilo del botón en el formulario en foco */
 .skin-red .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
   border-left-color: #fff;
 }
+
+/* Estilo del botón en el formulario */
 .skin-red .sidebar-form .btn {
-  color: #999;
-  border-top-left-radius: 0;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 0;
+  color: #000;
 }
 /*
  * Skin: Red
