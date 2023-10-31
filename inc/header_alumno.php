@@ -62,14 +62,14 @@
 
   </head>
 
-<body class="hold-transition skin-red sidebar-mini">
-  <div class="wrapper">
+<body class="hold-transition skin-red sidebar-mini" >
+  <div class="wrapper" >
 
     <!-- Main Header -->
-    <header class="main-header">
+    <header class="main-header" >
 
       <!-- Logo -->
-      <a href="#" class="logo">
+      <a href="#" class="logo" style="background-color: darkred;">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>IEAR</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -77,28 +77,28 @@
       </a>
 
       <!-- Header Navbar -->
-      <nav class="navbar navbar-static-top" role="navigation">
+      <nav class="navbar navbar-static-top" role="navigation"  style="background-color: darkred;" >
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
         <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
+        <div class="navbar-custom-menu" >
+          <ul class="nav navbar-nav" >
 
             <!-- User Account Menu -->
-            <li class="dropdown user user-menu">
+            <li class="dropdown user user-menu" >
               <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                 <!-- The user image in the navbar-->
                 <img src="img/estudiante.png" class="user-image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs"></span>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" >
                 
                 <!-- The user image in the menu -->
-                <li class="user-header">
+                <li class="user-header" style="background-color:MidnightBlue;border-radius: 10px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);padding: 10px;margin: 3px;">
                   <img src="img/estudiante.png" class="img-circle" alt="User Image">
                   <p>
                     <?php echo $_SESSION['username']; ?> - <?php echo $_SESSION['role']; ?>
@@ -106,7 +106,7 @@
                   </p>
                 </li>
                 <!-- Menu Footer-->
-                <li class="user-footer">
+                <li class="user-footer" style="border-radius: 10px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);padding: 10px;margin: 3px;">
                   <div class="pull-left">
                     <a href="profile.php" class="btn btn-default btn-flat">Perfil</a>
                   </div>
@@ -122,10 +122,10 @@
       </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar" style="border-radius: 10px;" >
 
       <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
+      <section class="sidebar" >
 
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
@@ -142,28 +142,17 @@
        <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU PRINCIPAL</li>
 
-          <li><a href="dashboard.php"><i class="fa fa-dashboard"></i> <span>PAGINA DE INICIO</span></a></li>
+          <li><a href="dashboard.php"><i class="glyphicon glyphicon-home"></i> <span>PAGINA DE INICIO</span></a></li>
           <li class="treeview">
             <a href="#">
-              <i class="glyphicon glyphicon-wrench"></i> <span>NOTIFICACIONES</span>
+              <i class="glyphicon glyphicon-tasks"></i> <span>CALIFICACIONES</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="Notificaciones.php"><i class="fa fa-circle-o"></i> LISTADO NOTIFICACIONES</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="glyphicon glyphicon-wrench"></i> <span>ACTIVIDADES</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href=""><i class="fa fa-circle-o"></i> ACTIVIDADES CALIFICADAS</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> ACTIVIDADES PENDIENTES</a></li>
+              <li><a href=""><i class="glyphicon glyphicon-ok-sign"></i> ACTIVIDADES CALIFICADAS</a></li>
+              <li><a href=""><i class="glyphicon glyphicon-retweet"></i> ACTIVIDADES PENDIENTES</a></li>
             </ul>
           </li>
         </ul>

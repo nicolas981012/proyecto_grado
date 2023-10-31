@@ -20,7 +20,7 @@ if ($_SESSION['username'] == "") {
 ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-size:cover">
 <style>
     .card {
       border: 1px solid #d1d1d1;
@@ -31,7 +31,7 @@ if ($_SESSION['username'] == "") {
 
     /* Estilo del encabezado de la tarjeta */
     .card-header {
-      background-color: #007bff;
+      background-color: green;
       color: #fff;
       border-bottom: none;
     }
@@ -69,15 +69,15 @@ if ($_SESSION['username'] == "") {
   <?php
   $docente = $_SESSION['Cedula'];
   if ($_SESSION['role'] == "alumno") {
-    echo '<section class="content">';
-    echo '<center>';
-    echo '<h1>' . "MIS CLASES" . '</h1>';
-    echo '</center>';
+    echo '<section class="content" >';
+    
+    echo '<h3 style="font-family:lobster;background-color:#f5f5f5;padding-left:20px;margin:0">' . "MIS CLASES" . '</h3>';
+    
     echo '<br>';
     echo '<div class="row">';
     // Itera sobre los cursos inscritos y muéstralos en el dashboard
 
-    $select = $pdo->prepare("SELECT c.Nombre as clase,c.Descripcion as descripcion
+    $select = $pdo->prepare("SELECT c.Nombre as clase,c.Descripcion as descripcion,c.idClase as id,c.Fecha_inicial as inicial,c.Fecha_final as final
     FROM alumno a
     join grado b
     ON a.Grado = b.id_grado
@@ -89,17 +89,21 @@ if ($_SESSION['username'] == "") {
       $cursosinscritos[] = $row;
     }
     foreach ($cursosinscritos as $curso) {
-      echo '<div class="col-lg-3 col-6">';
-      echo '<div class="small-box bg-primary">';
+      echo '<div class="col-lg-3 col-6" style="">';
+      echo '<div class="small-box bg-primary" style="background-color:rgba(0,0,0,0); border:1px solid #d1d1d1; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);padding: 10px;margin: 10px;">';
       echo '<div class="inner">';
-      echo '<h3>' . $curso['clase'] . '</h3>';
-      echo '<p>' . $curso['descripcion'] . '</p>';
+      echo '<center>';
+      echo '<h4 style="color:black"><strong>' . $curso['clase'] . '</strong></h4>';
+      echo '</center>';
+      echo '<br>';
+      echo '<p style="color:black">' . $curso['descripcion'] . '</p>';
+      echo '<p style="color:black">' . $curso['inicial'] .''.' / '.''.$curso['final']. '</p>';
       echo '</div>';
       echo '<div class="icon">';
       echo '<i class=""></i>';
       echo '</div>';
-      echo '<a href="#" class="small-box-footer">contenido <i class="fas fa-arrow-circle-right"></i></a>';
-      echo '<a href="#" class="small-box-footer">actividades <i class="fas fa-arrow-circle-right"></i></a>';
+      echo '<a href="contenido_clase.php?clase_id='. $curso['id'] .'" class="small-box-footer" style="background-color:red">contenido <i class="glyphicon glyphicon-duplicate"></i></a>';
+      echo '<a href="actividad_clase.php?clase_id='. $curso['id'] .'" class="small-box-footer" style="background-color:blue">actividades <i class="glyphicon glyphicon-calendar"></i></a>';
       echo '</div>';
       echo '</div>';
     }
@@ -109,10 +113,10 @@ if ($_SESSION['username'] == "") {
   ?>
   <?php
   if ($_SESSION['role'] == "alumno") {
-    echo '<section class="content">';
-    echo '<center>';
-    echo '<h1>' . "NOTIFICACIONES" . '</h1>';
-    echo '</center>';
+    echo '<section class="content" >';
+    
+    echo '<h3 style="font-family:lobster;background-color:#f5f5f5;padding-left:20px;margin:0">' . "NOTIFICACIONES" . '</h3>';
+    echo '<br>';
     echo '<div class="row">';
 
     // Itera sobre las notificaciones de clases del estudiante

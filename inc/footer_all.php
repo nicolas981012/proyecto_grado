@@ -1,5 +1,5 @@
 <!-- Main Footer -->
-<footer class="main-footer">
+<footer class="main-footer" style="background-color:whitesmoke">
         <div class="pull-right hidden-xs">
             Versión 1.0
         </div>
