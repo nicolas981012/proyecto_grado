@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2023 a las 15:47:37
+-- Tiempo de generación: 02-11-2023 a las 18:16:51
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -33,11 +33,7 @@ CREATE TABLE `actividad` (
   `titulo` varchar(20) DEFAULT NULL,
   `objetivo` varchar(200) DEFAULT NULL,
   `tipo_actividad` varchar(200) DEFAULT NULL,
-  `estado_tarea` int(3) NOT NULL,
   `estado` int(3) NOT NULL,
-  `archivo` varchar(200) DEFAULT NULL,
-  `calificacion` varchar(200) DEFAULT NULL,
-  `comentario_docente` varchar(200) DEFAULT NULL,
   `Fecha_limite` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -45,8 +41,8 @@ CREATE TABLE `actividad` (
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`idActividad`, `Clase_idClase`, `titulo`, `objetivo`, `tipo_actividad`, `estado_tarea`, `estado`, `archivo`, `calificacion`, `comentario_docente`, `Fecha_limite`) VALUES
-(1, 1, 'TAREA NUMEROS', '<p>Objetivo:</p>\r\n\r\n<p>Reconocer y saber escribir los primeros numeros en ingles</p>\r\n', 'ESCRITURA', 1, 1, '', '', '', '2023-11-01');
+INSERT INTO `actividad` (`idActividad`, `Clase_idClase`, `titulo`, `objetivo`, `tipo_actividad`, `estado`, `Fecha_limite`) VALUES
+(1, 1, 'TAREA NUMEROS', '<p>Objetivo:</p>\r\n\r\n<p>Reconocer y saber escribir los primeros numeros en ingles</p>\r\n', 'ESCRITURA', 1, '2023-11-01');
 
 -- --------------------------------------------------------
 
@@ -222,10 +218,14 @@ INSERT INTO `notificaciones` (`idNotificaciones`, `Clase_idClase`, `Asunto`, `Fe
 --
 
 CREATE TABLE `progreso` (
+  `id_Progreso` int(10) UNSIGNED NOT NULL,
   `Alumno_id_Alumno` int(10) UNSIGNED NOT NULL,
-  `Clase_idClase` int(10) UNSIGNED NOT NULL,
+  `Actividad_idActividad` int(10) UNSIGNED NOT NULL,
+  `Estado` int(20) DEFAULT NULL,
+  `respuesta` varchar(500) DEFAULT NULL,
+  `archivo` varchar(500) DEFAULT NULL,
   `Calificacion` int(10) UNSIGNED DEFAULT NULL,
-  `Comentario` varchar(20) DEFAULT NULL
+  `Comentario_docente` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -291,9 +291,9 @@ ALTER TABLE `notificaciones`
 -- Indices de la tabla `progreso`
 --
 ALTER TABLE `progreso`
-  ADD PRIMARY KEY (`Alumno_id_Alumno`,`Clase_idClase`),
-  ADD KEY `Alumno_has_Clase_FKIndex1` (`Alumno_id_Alumno`),
-  ADD KEY `Alumno_has_Clase_FKIndex2` (`Clase_idClase`);
+  ADD PRIMARY KEY (`id_Progreso`),
+  ADD KEY `Alumno_FKIndex2` (`Alumno_id_Alumno`),
+  ADD KEY `actividad_FKIndex3` (`Actividad_idActividad`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas

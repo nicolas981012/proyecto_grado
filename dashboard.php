@@ -18,8 +18,9 @@ if ($_SESSION['username'] == "") {
   }
 }
 ?>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Content Wrapper. Contains page content -->
+
 <div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;">
   <style>
     .card {
@@ -156,10 +157,11 @@ if ($_SESSION['username'] == "") {
 
   <?php
   if ($_SESSION['role'] == "administrador") {
-    $select = $pdo->prepare("SELECT count(a.id_Alumno) as alumnos,b.Grado_numerico as grado
+    $select = $pdo->prepare("SELECT b.Grado_numerico as grado,count(a.id_Alumno) as alumnos
       FROM alumno a
       join grado b
-      ON a.Grado = b.id_grado");
+      ON a.Grado = b.id_grado
+      group by b.Grado_numerico;");
     $select->execute();
     $total = [];
     $date = [];
@@ -185,6 +187,8 @@ if ($_SESSION['username'] == "") {
 </div>
 
 <script>
+ document.addEventListener("DOMContentLoaded",
+ function(){
   var ctx = document.getElementById('nn');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -200,6 +204,7 @@ if ($_SESSION['username'] == "") {
     },
     options: {}
   });
+});
 </script>
 <?php
 include_once 'inc/footer_all.php';
