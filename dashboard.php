@@ -1,7 +1,7 @@
 <?php
 include_once 'db/connect_db.php';
+
 session_start();
-error_reporting(0);
 if ($_SESSION['username'] == "") {
   header('location:index.php');
 } else {
@@ -18,10 +18,10 @@ if ($_SESSION['username'] == "") {
   }
 }
 ?>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/chart.min.js"></script>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;">
-<style>
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;">
+  <style>
     .card {
       border: 1px solid #d1d1d1;
       border-radius: 5px;
@@ -95,13 +95,13 @@ if ($_SESSION['username'] == "") {
       echo '</center>';
       echo '<br>';
       echo '<p style="color:black">' . $curso['descripcion'] . '</p>';
-      echo '<p style="color:black">' . $curso['inicial'] .''.' / '.''.$curso['final']. '</p>';
+      echo '<p style="color:black">' . $curso['inicial'] . '' . ' / ' . '' . $curso['final'] . '</p>';
       echo '</div>';
       echo '<div class="icon">';
       echo '<i class=""></i>';
       echo '</div>';
-      echo '<a href="contenido_clase.php?clase_id='. $curso['id'] .'" class="small-box-footer" style="background-color:red">contenido <i class="glyphicon glyphicon-duplicate"></i></a>';
-      echo '<a href="actividad_clase.php?clase_id='. $curso['id'] .'" class="small-box-footer" style="background-color:blue">actividades <i class="glyphicon glyphicon-calendar"></i></a>';
+      echo '<a href="contenido_clase.php?clase_id=' . $curso['id'] . '" class="small-box-footer" style="background-color:red">contenido <i class="glyphicon glyphicon-duplicate"></i></a>';
+      echo '<a href="actividad_clase.php?clase_id=' . $curso['id'] . '" class="small-box-footer" style="background-color:blue">actividades <i class="glyphicon glyphicon-calendar"></i></a>';
       echo '</div>';
       echo '</div>';
     }
@@ -112,7 +112,7 @@ if ($_SESSION['username'] == "") {
   <?php
   if ($_SESSION['role'] == "alumno") {
     echo '<section class="content" >';
-    
+
     echo '<h3 style="font-family:lobster;background-color:#f5f5f5;padding-left:20px;margin:0">' . "NOTIFICACIONES" . '</h3>';
     echo '<br>';
     echo '<div class="row">';
@@ -153,12 +153,52 @@ if ($_SESSION['username'] == "") {
     echo '</section>';
   }
   ?>
+
+  <?php
+  if ($_SESSION['role'] == "administrador") {
+    $select = $pdo->prepare("SELECT count(a.id_Alumno) as alumnos,b.Grado_numerico as grado
+      FROM alumno a
+      join grado b
+      ON a.Grado = b.id_grado");
+    $select->execute();
+    $total = [];
+    $date = [];
+    while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+      extract($row);
+      $total[] = $alumnos;
+      $date[] = $grado;
+    }
+  ?>
+    <section class="content">
+      <br>
+      <div class="row">
+        <div class="chart">
+          <canvas id="nn" style="height:250px;">
+          </canvas>
+        </div>
+      </div>
+    </section>
+
+  <?php
+  }
+  ?>
 </div>
 
 <script>
-  $(document).ready(function() {
-    $('#myBestProduct').DataTable();
-    $('.carousel').carousel();
+  var ctx = document.getElementById('nn');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($date); ?>,
+      datasets: [{
+        label: 'estudiantes por grado',
+        data: <?php echo json_encode($total); ?>,
+        backgroundColor: 'rgb(13, 192, 58)',
+        borderColor: 'rgb(32, 204, 75)',
+        borderWidth: 1
+      }]
+    },
+    options: {}
   });
 </script>
 <?php

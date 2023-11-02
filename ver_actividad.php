@@ -19,18 +19,17 @@ if (isset($_GET['actividad_id'])) {
         echo '<div class="box">';
         echo '<div class="box-header with-border">';
         echo '<h3 class="box-title">' . $row['titulo'] . '</h3>';
+        echo '<p>' . $row['tipo_actividad'] . '</p>';
         echo '</div>';
         echo '<div class="box-body">';
-        echo '<p>' . $row['contenido_texto'] . '</p>';
-        if (!empty($row['archivo'])) {
-            echo '<a href="upload/' . $row['archivo'] . '" target="_blank">Descargar Archivo</a>';
-        }
-        if (!empty($row['video'])) {
-            echo '<div class="embed-responsive embed-responsive-16by9">';
-            echo '<iframe class="embed-responsive-item" src="' . $row['video'] . '"></iframe>';
-            echo '</div>';
-        }
+        echo '<p>' . $row['objetivo'] . '</p>';
+        echo '<p>' . $row['Fecha_limite'] . '</p>';
         echo '</div>';
+        echo '<a href="entregar_actividad.php?actividad_id=' . $row['idActividad'] . '">';
+        echo "Contestar Actividad";
+        echo '</a>';
+        
+
         echo '</div>';
         echo '</section>';
         echo '</div>';
