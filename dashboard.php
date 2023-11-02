@@ -20,7 +20,7 @@ if ($_SESSION['username'] == "") {
 ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-size:cover">
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;">
 <style>
     .card {
       border: 1px solid #d1d1d1;
@@ -70,9 +70,7 @@ if ($_SESSION['username'] == "") {
   $docente = $_SESSION['Cedula'];
   if ($_SESSION['role'] == "alumno") {
     echo '<section class="content" >';
-    
     echo '<h3 style="font-family:lobster;background-color:#f5f5f5;padding-left:20px;margin:0">' . "MIS CLASES" . '</h3>';
-    
     echo '<br>';
     echo '<div class="row">';
     // Itera sobre los cursos inscritos y muéstralos en el dashboard
@@ -157,17 +155,12 @@ if ($_SESSION['username'] == "") {
   ?>
 </div>
 
-<!-- Calendar -->
-
-<!-- /.content-wrapper -->
 <script>
   $(document).ready(function() {
     $('#myBestProduct').DataTable();
     $('.carousel').carousel();
   });
 </script>
-
-
 <?php
 include_once 'inc/footer_all.php';
 ?>
