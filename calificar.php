@@ -17,55 +17,55 @@ if ($_SESSION['username'] == "") {
             }
         }
     }
-}  
+}
 if ($id = $_GET['id']) {
     $select = $pdo->prepare("SELECT * FROM progreso WHERE id_Progreso=$id");
     $select->execute();
     $row = $select->fetch(PDO::FETCH_ASSOC);
-
-    $cedula = $row['doc_per'];
-    $nombre = $row['nom_per'];
-    $apellido = $row['ape_per'];
-    $telefono = $row['tel_per'];
-    $direccion= $row['dir_per'];
-    $correo = $row['cor_per'];
+    $progreso = $row['id_Progreso'];
+    $idalumno = $row['Alumno_id_Alumno'];
+    $idactividad = $row['Actividad_idActividad'];
+    $estado = $row['Estado'];
+    $respuesta = $row['respuesta'];
+    $archivo = $row['archivo'];
+    $calificacion = $row['Calificacion'];
+    $comentario = $row['Comentario_docente'];
 }
 if (isset($_POST['update_actividad'])) {
-    $cedu_cliente = $_POST['cedula'];
-    $nom_cliente = $_POST['nombre'];
-    $ape_cliente = $_POST['apellido'];
-    $tel_cliente = $_POST['telefono'];
-    $dir_cliente = $_POST['direccion'];
-    $cor_cliente = $_POST['correo'];
- 
-        $update = $pdo->prepare("UPDATE personas SET doc_per=:product_code,nom_per=:product_name,
-                ape_per=:product_category, tel_per=:purchase_price, dir_per=:sell_price,
-                cor_per=:stock WHERE doc_per=$id");
+    $codigo_progreso = $_POST['codigo'];
+    $ecalificacion = $_POST['calificacion'];
+    $ecomentario = $_POST['comentario'];
+    $eestado=1;
 
-        $update->bindParam('product_code', $cedu_cliente);
-        $update->bindParam('product_name', $nom_cliente);
-        $update->bindParam('product_category', $ape_cliente);
-        $update->bindParam('purchase_price', $tel_cliente);
-        $update->bindParam('sell_price', $dir_cliente);
-        $update->bindParam('stock', $cor_cliente);
-       
-if ($update->execute()) {
-    header('location:ver_empleado.php?id=' . urlencode($id));
-    ob_end_flush();
-        } else {
-            echo '<script type="text/javascript">
+    $update = $pdo->prepare("UPDATE progreso SET Calificacion=:califica,
+    Comentario_docente=:coment,Estado=:est WHERE id_progreso=$id");
+
+    $update->bindParam('califica', $ecalificacion);
+    $update->bindParam('coment', $ecomentario);
+    $update->bindParam('est', $est);
+
+    if ($update->execute()) {
+        echo '<script type="text/javascript">
+        jQuery(function validation(){
+        swal("Success", "Actividad calificada con exito ", "success", {
+        button: "Continuar",
+            });
+        });
+        </script>';
+    } else {
+        echo '<script type="text/javascript">
                         jQuery(function validation(){
-                        swal("Error", "Ocurri贸 un error", "error", {
+                        swal("Error", "Ocurrio un error", "error", {
                         button: "Continuar",
                             });
                         });
                         </script>';
-        }
     }
+}
 ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -77,43 +77,43 @@ if ($update->execute()) {
     <section class="content container-fluid">
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">EDITAR CLIENTE</h3>
+                <h3 class="box-title">CALIFICAR ACTIVIDAD</h3>
             </div>
             <form action="" method="POST" name="form_product" enctype="multipart/form-data" autocomplete="off">
                 <div class="box-body">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="">DOCUMENTO</label>
-                            <input type="text" class="form-control" name="cedula"
-                                value="<?php echo $cedula; ?>" required readonly>
+                            <label for="">CODIGO</label>
+                            <input type="text" class="form-control" name="codigo" value="<?php echo $progreso; ?>" required readonly>
                         </div>
                         <div class="form-group">
-                            <label for="">NOMBRE</label>
-                            <input type="text" class="form-control" name="nombre"
-                                value="<?php echo $nombre; ?>" required>
+                            <label for="">ALUMNO</label>
+                            <input type="text" class="form-control" name="estudiante" value="<?php echo $idalumno; ?>" required readonly>
                         </div>
                         <div class="form-group">
-                            <label for="">APELLIDO</label>
-                            <input type="text" class="form-control" name="apellido"
-                                value="<?php echo $apellido; ?>" required>
+                            <label for="">ACTIVIDAD</label>
+                            <input type="text" class="form-control" name="actividad" value="<?php echo $idactividad; ?>" required readonly>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="">TELEFONO</label>
-                            <input type="number" class="form-control" name="telefono"
-                                value="<?php echo $telefono; ?>" required>
+                            <label for="">ARCHIVO</label>
+                            <input type="number" class="form-control" name="archivo" value="<?php echo $telefono; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="">DIRECCION</label>
-                            <input type="text" class="form-control" name="direccion"
-                                value="<?php echo $direccion; ?>" required>
+                            <label for="">CALIFICACION</label>
+                            <input type="text" class="form-control" name="calificacion" value="<?php echo $direccion; ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="">CORREO</label>
-                            <input type="text" class="form-control" name="correo"
-                                value="<?php echo $correo; ?>" required>
+                            <label for="">COMENTARIO</label>
+                            <input type="text" class="form-control" name="comentario" value="<?php echo $correo; ?>" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="">RESPUESTA ESTUDIANTE</label>
+                            <textarea name="falla" id="respuesta" cols="30" rows="10" class="form-control" value="" required><?php echo $respuesta; ?></textarea>
                         </div>
                     </div>
                 </div>

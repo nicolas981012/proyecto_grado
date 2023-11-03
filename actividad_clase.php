@@ -19,7 +19,7 @@ if (isset($_GET['clase_id'])) {
 ?>
 
 <!-- Aquí puedes agregar el código HTML y estilos para mostrar la lista de contenidos -->
-<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-size:cover" >
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;" >
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Actividades de la Clase</h1>

@@ -1,6 +1,6 @@
 <?php
 include_once 'db/connect_db.php';
-
+error_reporting(0);
 session_start();
 if ($_SESSION['username'] == "") {
   header('location:index.php');
@@ -103,6 +103,7 @@ if ($_SESSION['username'] == "") {
       echo '</div>';
       echo '<a href="contenido_clase.php?clase_id=' . $curso['id'] . '" class="small-box-footer" style="background-color:red">contenido <i class="glyphicon glyphicon-duplicate"></i></a>';
       echo '<a href="actividad_clase.php?clase_id=' . $curso['id'] . '" class="small-box-footer" style="background-color:blue">actividades <i class="glyphicon glyphicon-calendar"></i></a>';
+      echo '<a href="./misc/diploma.php?id=' . $curso['clase'] .'" target="_blank" class="small-box-footer" style="background-color:#d9ad26">diploma <i class="glyphicon glyphicon-calendar"></i></a>';
       echo '</div>';
       echo '</div>';
     }

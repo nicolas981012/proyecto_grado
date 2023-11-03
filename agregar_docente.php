@@ -86,7 +86,7 @@ if (isset($_POST['add_doc'])) {
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;">
         <h1>
             DOCENTE
         </h1>

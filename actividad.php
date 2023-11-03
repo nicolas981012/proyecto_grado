@@ -41,7 +41,7 @@ button: "Continuar",
 
 </html>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;">
     <!-- Main content -->
     <div class="text-center" id="spinner">
         <i class="fa fa-spinner fa-spin fa-3x"></i>

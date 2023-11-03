@@ -56,17 +56,54 @@
     <script src="plugins/iCheck/icheck.min.js"></script>
     <!-- bootstrap time picker -->
     <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
-
+    <script>
+      window.callbellSettings = {
+        token: "3jfckf6GviwSZHnd8gASnaiL"
+      };
+    </script>
+    <script>
+      (function() {
+        var w = window;
+        var ic = w.callbell;
+        if (typeof ic === "function") {
+          ic('reattach_activator');
+          ic('update', callbellSettings);
+        } else {
+          var d = document;
+          var i = function() {
+            i.c(arguments)
+          };
+          i.q = [];
+          i.c = function(args) {
+            i.q.push(args)
+          };
+          w.Callbell = i;
+          var l = function() {
+            var s = d.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'https://dash.callbell.eu/include/' + window.callbellSettings.token + '.js';
+            var x = d.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+          };
+          if (w.attachEvent) {
+            w.attachEvent('onload', l);
+          } else {
+            w.addEventListener('load', l, false);
+          }
+        }
+      })()
+    </script>
     <!-- chart Js -->
     <script src="chartjs/dist/Chart.min.js"></script>
 
   </head>
 
-<body class="hold-transition skin-red sidebar-mini" >
-  <div class="wrapper" >
+<body class="hold-transition skin-red sidebar-mini">
+  <div class="wrapper">
 
     <!-- Main Header -->
-    <header class="main-header" >
+    <header class="main-header">
 
       <!-- Logo -->
       <a href="#" class="logo" style="background-color: darkred;">
@@ -77,26 +114,26 @@
       </a>
 
       <!-- Header Navbar -->
-      <nav class="navbar navbar-static-top" role="navigation"  style="background-color: darkred;" >
+      <nav class="navbar navbar-static-top" role="navigation" style="background-color: darkred;">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
           <span class="sr-only">Toggle navigation</span>
         </a>
         <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu" >
-          <ul class="nav navbar-nav" >
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
 
             <!-- User Account Menu -->
-            <li class="dropdown user user-menu" >
+            <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
                 <img src="img/estudiante.png" class="user-image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                 <span class="hidden-xs"></span>
               </a>
-              <ul class="dropdown-menu" >
-                
+              <ul class="dropdown-menu">
+
                 <!-- The user image in the menu -->
                 <li class="user-header" style="background-color:MidnightBlue;border-radius: 10px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);padding: 10px;margin: 3px;">
                   <img src="img/estudiante.png" class="img-circle" alt="User Image">
@@ -108,10 +145,10 @@
                 <!-- Menu Footer-->
                 <li class="user-footer" style="border-radius: 10px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);padding: 10px;margin: 3px;">
                   <div class="pull-left">
-                    <a href="profile.php" class="btn btn-default btn-flat">Perfil</a>
+                    <a href="profile.php" class="btn btn-default btn-flat"><i class="glyphicon glyphicon-user"></i>Perfil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="misc/logout.php" class="btn btn-default btn-flat" onclick="return confirm('Esta seguro de salir?')" class="btn btn-danger">Cerrar sesion</a>
+                    <a href="misc/logout.php" class="btn btn-default btn-flat" onclick="return confirm('Esta seguro de salir?')" class="btn btn-danger"><i class="glyphicon glyphicon-off"></i> Cerrar sesion</a>
                   </div>
                 </li>
               </ul>
@@ -122,10 +159,10 @@
       </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar" style="border-radius: 10px;" >
+    <aside class="main-sidebar" style="border-radius: 10px;">
 
       <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar" >
+      <section class="sidebar">
 
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
@@ -138,8 +175,8 @@
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
         </div>
-       <!-- Sidebar Menu -->
-       <ul class="sidebar-menu" data-widget="tree">
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MENU PRINCIPAL</li>
 
           <li><a href="dashboard.php"><i class="glyphicon glyphicon-home"></i> <span>PAGINA DE INICIO</span></a></li>
@@ -151,8 +188,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href=""><i class="glyphicon glyphicon-ok-sign"></i> ACTIVIDADES CALIFICADAS</a></li>
-              <li><a href=""><i class="glyphicon glyphicon-retweet"></i> ACTIVIDADES PENDIENTES</a></li>
+              <li><a href="calificaciones.php"><i class="glyphicon glyphicon-ok-sign"></i> ACTIVIDADES CALIFICADAS</a></li>
             </ul>
           </li>
         </ul>

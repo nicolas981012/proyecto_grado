@@ -20,7 +20,7 @@ if ($_SESSION['username'] == "") {
 }
 ?>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper" style="background-image: url(./img/53.jpeg);background-repeat:no-repeat;background-size:cover;">
   <!-- Content Header (Page header) -->
 
   <!-- Main content -->

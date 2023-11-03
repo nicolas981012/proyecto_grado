@@ -20,6 +20,7 @@ if (isset($_POST['btn_login'])) {
     }elseif ($rol == "alumno") {
       $_SESSION['role'] = $rol;
       $_SESSION['username'] = $row['Nombre'];
+      $_SESSION['apellido'] = $row['Apellido'];
       $_SESSION['Cedula'] = $row['id_Alumno'];
     }elseif ($rol == "docente") {
       $_SESSION['role'] = $rol;
