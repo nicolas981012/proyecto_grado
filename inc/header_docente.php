@@ -178,7 +178,7 @@
             <ul class="treeview-menu">
               <li><a href="agregar_actividad.php"><i class="fa fa-circle-o"></i> AÑADIR ACTIVIDAD</a></li>
               <li><a href="actividad.php"><i class="fa fa-circle-o"></i> LISTADO ACTIVIDADES</a></li>
-              <li><a href=""><i class="fa fa-circle-o"></i> CALIFICAR ACTIVIDADES</a></li>
+              <li><a href="actividad_calificar.php"><i class="fa fa-circle-o"></i> CALIFICAR ACTIVIDADES</a></li>
             </ul>
           </li>
           <li class="treeview">

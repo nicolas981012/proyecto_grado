@@ -22,11 +22,11 @@
         $contenido_id = $_GET['actividad_id'];
         if (isset($_POST['add_eactividad'])) {
 
-            $codigoconte = $_POST['codigo'];
-            $claseconte = $_POST['clase'];
-            $tituloconte = $_POST['titulo'];
-            $archivoconte = $_POST['archivo'];
-            $estadoconte = $_POST['estado'];
+            $codigof = $_POST['codigo'];
+            $calificacion = "";
+            $comentario = "";
+            $estudiante = $_SESSION['Cedula'];
+            $estadoconte = "ENTREGADO";
             $textoconte = $_POST['texto'];
             $img = $_FILES['archivo']['name'];
             $img_tmp = $_FILES['archivo']['tmp_name'];
@@ -50,17 +50,18 @@
                         $archivo_img = $img_new;
                         if (!isset($error)) {
 
-                            $insert = $pdo->prepare("INSERT INTO contenido(idContenido, Clase_idClase, titulo, 
-                    contenido_texto, archivo, estado, video) VALUES
-                    (:id,:clase,:titulo,:texto,:archivo,:estado,:video)");
+                            $insert = $pdo->prepare("INSERT INTO progreso(id_Progreso, Alumno_id_Alumno, Actividad_idActividad, 
+                            Estado, respuesta, archivo, calificacion, Comentario_docente) 
+                            VALUES (:id,:alumno,:actividad,:estado,:respuesta,:archivo,:califica,:comentario)");
 
-                            $insert->bindParam(':id', $codigoconte);
-                            $insert->bindParam(':clase', $claseconte);
-                            $insert->bindParam(':titulo', $tituloconte);
-                            $insert->bindParam(':texto', $textoconte);
-                            $insert->bindParam(':archivo', $archivo_img);
+                            $insert->bindParam(':id', $codigof);
+                            $insert->bindParam(':alumno', $estudiante);
+                            $insert->bindParam(':actividad', $contenido_id);
                             $insert->bindParam(':estado', $estadoconte);
-                            $insert->bindParam(':video', $videoconte);
+                            $insert->bindParam(':respuesta', $textoconte);
+                            $insert->bindParam(':archivo', $archivo_img);
+                            $insert->bindParam(':califica', $calificacion);
+                            $insert->bindParam(':comentario', $comentario);
 
 
                             if ($insert->execute()) {
@@ -129,7 +130,7 @@
 
                         <div class="form-group">
                             <?php
-                            $select = $pdo->prepare("SELECT MAX(`idContenido`)FROM contenido");
+                            $select = $pdo->prepare("SELECT MAX(`id_Progreso`)FROM progreso");
                             $select->execute();
                             $row2 = $select->fetchColumn() + 1;
                             ?>
