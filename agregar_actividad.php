@@ -33,7 +33,27 @@ if (isset($_POST['add_actividad'])) {
     $arch="";
     $cali="";
     $coment="";
+    $img = $_FILES['archivo']['name'];
+    $img_tmp = $_FILES['archivo']['tmp_name'];
+    $img_size = $_FILES['archivo']['size'];
+    $img_ext = explode('.', $img);
+    $img_ext = strtolower(end($img_ext));
+    $img_new = uniqid() . '.' . $img_ext;
+    $store = "upload/" . $img_new;
     
+    if ($img_ext == 'docx' || $img_ext == 'pdf' || $img_ext == 'pptx') {
+        if ($img_size >= 10000000) {
+            echo '<script type="text/javascript">
+                            jQuery(function validation(){
+                            swal("Error", "El archivo debe tener 10 MB como maximo.", "error", {
+                            button: "Continuar",
+                                });
+                            });
+                            </script>';
+        } else {
+            if (move_uploaded_file($img_tmp, $store)) {
+                $archivo_img = $img_new;
+                if (!isset($error)) {
 
 
                     $insert = $pdo->prepare("INSERT INTO actividad(idActividad, Clase_idClase, titulo, 
@@ -41,7 +61,6 @@ if (isset($_POST['add_actividad'])) {
                     calificacion, comentario_docente, Fecha_limite) VALUES 
                     (:id,:clase,:titulo,:objetivo,:actividad,:estadoact,:estado,:archivo,:calificacion,
                     :comentario,:fecha)");
-
                     $insert->bindParam(':id', $codigoac);
                     $insert->bindParam(':clase', $claseac);
                     $insert->bindParam(':titulo', $tituloac);
@@ -53,12 +72,10 @@ if (isset($_POST['add_actividad'])) {
                     $insert->bindParam(':calificacion',$cali);
                     $insert->bindParam(':comentario', $coment);
                     $insert->bindParam(':fecha', $fecha);
-
-
                     if ($insert->execute()) {
                         echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Success", "actividad asignada ", "success", {
+                                        swal("Success", "contenido añadido con exito ", "success", {
                                         button: "Continuar",
                                             });
                                         });
@@ -70,8 +87,29 @@ if (isset($_POST['add_actividad'])) {
                                         button: "Continuar",
                                             });
                                         });
-                                        </script>';
+                                        </script>';;
                     }
+                } else {
+                    echo '<script type="text/javascript">
+                                        jQuery(function validation(){
+                                        swal("Error", "OcurriO un error", "error", {
+                                        button: "Continuar",
+                                            });
+                                        });
+                                        </script>';;;
+                }
+            }
+        }
+    } else {
+        $error = '<script type="text/javascript">
+                jQuery(function validation(){
+                swal("Error", "Sube un documento con los siguientes formatos : docx,pdf", "error", {
+                button: "Continuar",
+                    });
+                });
+                </script>';
+        echo $error;
+    }
 }
 
 
@@ -139,9 +177,12 @@ if (isset($_POST['add_actividad'])) {
                                 }
                                 ?>
                             </select>
-                            
                         </div>
-
+                        <div class="form-group">
+                            <label for="">ARCHIVO</label>
+                            <br>
+                            <input type="file" class="input-group" name="archivo" onchange="readURL(this);" required> <br>
+                        </div>
 
                     </div>
                     <div class="col-md-6">
