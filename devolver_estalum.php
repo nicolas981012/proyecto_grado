@@ -1,9 +1,9 @@
 <?php
 include_once 'db/connect_db.php';
 include_once 'misc/plugin.php';
-include_once 'db/connect_db.php';
-session_start();
 error_reporting(0);
+session_start();
+ob_start();
 if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {
@@ -30,7 +30,7 @@ if ($_SESSION['username'] == "") {
                 });
             });
             </script>';
-            header('refresh:2;Alumnos.php');
+            header('refresh:1;Alumnos.php');
     }
     
     ob_end_flush();

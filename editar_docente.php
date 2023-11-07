@@ -1,8 +1,9 @@
 <?php
 include_once 'db/connect_db.php';
-session_start();
 include_once 'misc/plugin.php';
 error_reporting(0);
+session_start();
+ob_start();;
 if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {

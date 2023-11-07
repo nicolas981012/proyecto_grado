@@ -23,9 +23,7 @@ if (isset($_POST['add_actividad'])) {
     $codigoac = $_POST['codigo'];
     $claseac = $_POST['clase'];
     $tituloac = $_POST['titulo'];
-
     $objetivosac = $_POST['texto'];
-
     $estado= $_POST['estado'];
     $fecha = $_POST['fecha_limite'];
     $actividad= $_POST['tipo_actividad'];
@@ -57,25 +55,21 @@ if (isset($_POST['add_actividad'])) {
 
 
                     $insert = $pdo->prepare("INSERT INTO actividad(idActividad, Clase_idClase, titulo, 
-                    objetivo, tipo_actividad, estado_tarea, estado, archivo, 
-                    calificacion, comentario_docente, Fecha_limite) VALUES 
-                    (:id,:clase,:titulo,:objetivo,:actividad,:estadoact,:estado,:archivo,:calificacion,
-                    :comentario,:fecha)");
+                    objetivo, tipo_actividad, estado, 
+                    Fecha_limite, archivo) VALUES 
+                    (:id,:clase,:titulo,:objetivo,:actividad,:estado,:fecha,:archivo)");
                     $insert->bindParam(':id', $codigoac);
                     $insert->bindParam(':clase', $claseac);
                     $insert->bindParam(':titulo', $tituloac);
                     $insert->bindParam(':objetivo', $objetivosac);
                     $insert->bindParam(':actividad', $actividad);
-                    $insert->bindParam(':estadoact',$estadoacti);
                     $insert->bindParam(':estado', $estado);
-                    $insert->bindParam(':archivo', $arch);
-                    $insert->bindParam(':calificacion',$cali);
-                    $insert->bindParam(':comentario', $coment);
+                    $insert->bindParam(':archivo', $archivo_img);
                     $insert->bindParam(':fecha', $fecha);
                     if ($insert->execute()) {
                         echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Success", "contenido añadido con exito ", "success", {
+                                        swal("Success", "actividad añadido con exito ", "success", {
                                         button: "Continuar",
                                             });
                                         });

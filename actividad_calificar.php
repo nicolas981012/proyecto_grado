@@ -1,6 +1,5 @@
 <?php
 include_once 'db/connect_db.php';
-include_once 'misc/plugin.php';
 session_start();
 
 if ($_SESSION['username'] == "") {

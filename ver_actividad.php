@@ -22,6 +22,9 @@ if (isset($_GET['actividad_id'])) {
         echo '<p>' . $row['tipo_actividad'] . '</p>';
         echo '</div>';
         echo '<div class="box-body">';
+        if (!empty($row['archivo'])) {
+            echo '<a href="upload/' . $row['archivo'] . '" target="_blank">Descargar Archivo</a>';
+        }
         echo '<p>' . $row['objetivo'] . '</p>';
         echo '<p>' . $row['Fecha_limite'] . '</p>';
         echo '</div>';

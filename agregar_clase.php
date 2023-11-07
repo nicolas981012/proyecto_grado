@@ -18,7 +18,7 @@ if ($_SESSION['username'] == "") {
     }
 }
 
-error_reporting(0);
+
 date_default_timezone_set('America/Bogota');
 
 if (isset($_POST['add_clase'])) {
@@ -29,7 +29,7 @@ if (isset($_POST['add_clase'])) {
     $fechai = $_POST['fechainicial'];
     $fechaf = $_POST['fechafinal'];
     $docente =$_SESSION['Cedula'];
-    $grado=$_SESSION['grado'];
+    $grado=$_POST['grado'];
     $descripcion = $_POST['descripcion'];
     $img = $_FILES['imagen']['name'];
     $img_tmp = $_FILES['imagen']['tmp_name'];

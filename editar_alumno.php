@@ -1,8 +1,9 @@
 <?php
 include_once 'db/connect_db.php';
 include_once 'misc/plugin.php';
-session_start();
 error_reporting(0);
+session_start();
+ob_start();
 if ($_SESSION['username'] == "") {
     header('location:index.php');
 } else {
@@ -107,14 +108,22 @@ if (isset($_POST['update_alumno'])) {
 
                     <div class="col-md-4">
                     <div class="form-group">
-                    <label for="">GRADO</label><br>
+                            <label for="">GRADO</label><br>
                             <select class="form-control" name="grado" required>
-                            <option value="401">
-                                    CUARTO
-                                </option>
-                                <option value="501">
-                                    QUINTO
-                                </option>
+                            <?php
+                                  $docente =$_SESSION['Cedula'];
+                                $select = $pdo->prepare("SELECT * from grado where estado=1");
+                                $select->execute();
+                                while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row)
+
+                                ?>
+                                    <option value="<?php echo $row['id_grado']; ?>">
+                                        <?php echo $row["Grado_numerico"]; ?>
+                                    </option>
+                                <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">

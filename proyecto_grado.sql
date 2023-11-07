@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2023 a las 18:16:51
+-- Tiempo de generación: 07-11-2023 a las 19:24:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,15 +34,17 @@ CREATE TABLE `actividad` (
   `objetivo` varchar(200) DEFAULT NULL,
   `tipo_actividad` varchar(200) DEFAULT NULL,
   `estado` int(3) NOT NULL,
-  `Fecha_limite` date DEFAULT NULL
+  `Fecha_limite` date DEFAULT NULL,
+  `archivo` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`idActividad`, `Clase_idClase`, `titulo`, `objetivo`, `tipo_actividad`, `estado`, `Fecha_limite`) VALUES
-(1, 1, 'TAREA NUMEROS', '<p>Objetivo:</p>\r\n\r\n<p>Reconocer y saber escribir los primeros numeros en ingles</p>\r\n', 'ESCRITURA', 1, '2023-11-01');
+INSERT INTO `actividad` (`idActividad`, `Clase_idClase`, `titulo`, `objetivo`, `tipo_actividad`, `estado`, `Fecha_limite`, `archivo`) VALUES
+(1, 1, 'TAREA NUMEROS', '<p>Objetivo:</p>\r\n\r\n<p>Reconocer y saber escribir los primeros numeros en ingles</p>\r\n', 'ESCRITURA', 1, '2023-11-01', NULL),
+(2, 2, 'fgffd', '<p>uyiuyiyuiyiuyiu</p>\r\n', 'LECTURA', 1, '2023-11-30', '654a7e14585ff.docx');
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,15 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`id_Alumno`, `administrador_Cedula`, `Nombre`, `Apellido`, `Grado`, `Correo`, `Telefono`, `Contrasena`, `Usuario`, `estado`) VALUES
-(1005450340, 1057517034, 'mateo', 'salazar', 2, 'msalazar3@iear.edu.co', '3182909852', '123', 'estudiante1', 1);
+(1005450340, 1057517034, 'mateo', 'salazar', 2, 'mateo.s3009@iear.edu.co', '3227897967', '123', 'estudiante1', 1),
+(1005450341, 1057517034, 'juan', 'rodriguez', 2, 'juan@iear.edu.co', '3182909852', 'juan1390', 'juancho501', 1),
+(1005459754, 1057517034, 'silvia', 'suarez', 1, 'silvias@iear.edu.co', '31823453434', 'ss9078', 'silvia8976', 1),
+(1005654346, 1057517034, 'martin', 'lozano', 1, 'mlozano@iear.edu.co', '3435435435', 'malo123', 'martinlozano', 1),
+(1005675675, 1057517034, 'lina', 'ortiz', 2, 'linaortiz@iear.edu.co', '3182909852', 'linita_1980', 'lina312', 1),
+(1005678566, 1057517034, 'dana', 'morales', 2, 'damorales@iear.edu.co', '3345345343', 'danamo534', 'dana534', 1),
+(1056776887, 1057517034, 'yolanda', 'miguel', 2, 'yolimiguel@iear.edu.co', '34534534534', 'ghjghjgh', 'yolanfa53461', 1),
+(1067650341, 1057517034, 'maria', 'benitez', 1, 'maribet@iear.edu.co', '3134534543', 'mabe123', 'maribenitez', 1),
+(1567567756, 1057517034, 'esteban', 'mateus', 2, 'estebanmateus@iear.edu.co', '31829345345', 'este123', 'esteban54', 0);
 
 -- --------------------------------------------------------
 
@@ -119,7 +129,8 @@ CREATE TABLE `clase` (
 
 INSERT INTO `clase` (`idClase`, `Docente_idDocente`, `Nombre`, `Nivel`, `Descripcion`, `Fecha_inicial`, `Fecha_final`, `Imagen`, `grado`) VALUES
 (1, 1340567890, 'CLASE NUMEROS', 0, 'CLASE DE APRENDIZAJE', '2023-10-24', '2023-11-30', '6538514b02d31.jpg', 2),
-(2, 1340567890, 'abecedario', 0, 'vamos a aprender el ', '2023-10-25', '2023-11-30', '6539a69582cff.png', 1);
+(2, 1340567890, 'abecedario', 0, 'vamos a aprender el ', '2023-10-25', '2023-11-30', '6539a69582cff.png', 1),
+(3, 1340567890, 'VHJHJGHJ', 0, 'HJGHJGHJ', '2023-11-07', '2023-11-15', '654a76cf2d5d6.jpeg', 1);
 
 -- --------------------------------------------------------
 
@@ -236,6 +247,7 @@ CREATE TABLE `progreso` (
 -- Indices de la tabla `actividad`
 --
 ALTER TABLE `actividad`
+  ADD PRIMARY KEY (`idActividad`),
   ADD KEY `actividad_FKIndex2` (`Clase_idClase`);
 
 --
@@ -309,7 +321,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `clase`
 --
 ALTER TABLE `clase`
-  MODIFY `idClase` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idClase` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
@@ -358,6 +370,12 @@ ALTER TABLE `docente`
 --
 ALTER TABLE `notificaciones`
   ADD CONSTRAINT `notificaciones_ibfk_1` FOREIGN KEY (`Clase_idClase`) REFERENCES `clase` (`idClase`);
+
+--
+-- Filtros para la tabla `progreso`
+--
+ALTER TABLE `progreso`
+  ADD CONSTRAINT `progreso_ibfk_1` FOREIGN KEY (`Alumno_id_Alumno`) REFERENCES `alumno` (`id_Alumno`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

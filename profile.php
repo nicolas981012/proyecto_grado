@@ -1,6 +1,6 @@
 <?php
 include_once 'db/connect_db.php';
-include_once 'misc/plugin.php';
+
 session_start();
 error_reporting(0);
 if ($_SESSION['username'] == "") {

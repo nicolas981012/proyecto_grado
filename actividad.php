@@ -1,6 +1,6 @@
 <?php
 include_once 'db/connect_db.php';
-include_once 'misc/plugin.php';
+
 session_start();
 error_reporting(0);
 if ($_SESSION['username'] == "") {
@@ -112,9 +112,9 @@ button: "Continuar",
                                     <td>
                                         <?php if ($_SESSION['role'] == "docente") { ?>
                                         
-                                                
-                                                <a href="editar_actividad.php?id=<?php echo $row->ID; ?>"
-                                                class="btn btn-info btn-sm"  title="EDITAR ACTIVIDAD"><i class="fa fa-pencil"></i></a>
+                                                <!--
+                                                <a href="editar_actividad.php?id=<?php //echo $row->ID; ?>"
+                                                class="btn btn-info btn-sm"  title="EDITAR ACTIVIDAD"><i class="fa fa-pencil"></i></a> -->
                                             <?php
                                         }
                                         ?>
