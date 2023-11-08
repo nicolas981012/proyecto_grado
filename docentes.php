@@ -1,6 +1,5 @@
 <?php
 include_once 'db/connect_db.php';
-include_once 'misc/plugin.php';
 session_start();
 error_reporting(0);
 if ($_SESSION['username'] == "") {
@@ -56,6 +55,7 @@ button: "Continuar",
             <div class="box-header with-border">
                 <h3 class="box-title">LISTA DE DOCENTES</h3>
                 <a href="agregar_docente.php" class="btn btn-primary btn-sm pull-right"><i class="fa fa-bars"></i> AGREGAR DOCENTE</a>
+                <a href="./misc/reporte_docente.php" class="btn btn-success btn-sm " title="REPORTE ESTUDIANTES ACTIVOS"><i class="fa fa-file-pdf-o"></i></a> 
             </div>
             <div class="box-body">
 
@@ -107,7 +107,7 @@ button: "Continuar",
                                     <td>
                                         <?php if ($_SESSION['role'] == "administrador") { ?>
                                             <a href="devolver_estadoc.php?id=<?php echo $row->idDocente; ?>"
-                                    class="btn btn-danger btn-sm" title="INACTIVAR DOCENTE"><i class="fa fa-trash" ></i></a>
+                                    class="btn btn-warning btn-sm" title="INACTIVAR DOCENTE"><i class="fa fa-share" ></i></a>
                                             
                                             <a href="editar_docente.php?id=<?php echo $row->idDocente; ?>"
                                                 class="btn btn-info btn-sm"  title="EDITAR DOCENTE"><i class="fa fa-pencil"></i></a>
