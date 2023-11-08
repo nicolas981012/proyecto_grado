@@ -115,7 +115,9 @@ button: "Continuar",
                                     </td>
                                     <td>
                                         <?php if ($_SESSION['role'] == "administrador") { ?>
-                                            <a href="devolver_estalum.php?id=<?php echo $row->id_Alumno; ?>"
+                                            
+                                            
+                                <a href="devolver_estalum.php?id=<?php echo $row->id_Alumno; ?>"
                                     class="btn btn-warning btn-sm" title="INACTIVAR ESTUDIANTE"><i class="fa fa-share" ></i></a>
                                             
                                             <a href="editar_alumno.php?id=<?php echo $row->id_Alumno; ?>"
@@ -123,6 +125,10 @@ button: "Continuar",
                                                 
                                                 <a href="ver_alumno.php?id=<?php echo $row->id_Alumno; ?>"
                                             class="btn btn-default btn-sm"  title="VER ESTUDIANTE"><i class="fa fa-eye"></i></a>
+                                            
+                                            <a href="eliminar_alumno.php?id=<?php echo $row->id_Alumno; ?>"
+                                            class="btn btn-danger btn-sm"  title="ELIMINAR ESTUDIANTE" onclick="return confirm('Esta seguro de eliminar el estudiante?')"><i class="fa fa-times-circle-o"></i></a>
+                                            
                                             <?php
                                         }
                                         ?>
