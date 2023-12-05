@@ -41,7 +41,7 @@ if (isset($_POST['update_actividad'])) {
 
     $update->bindParam('califica', $ecalificacion);
     $update->bindParam('coment', $ecomentario);
-    $update->bindParam('est', $est);
+    $update->bindParam('est', $eestado);
 
     if ($update->execute()) {
         echo '<script type="text/javascript">
@@ -97,16 +97,20 @@ if (isset($_POST['update_actividad'])) {
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="">ARCHIVO</label>
-                            <input type="number" class="form-control" name="archivo" value="<?php echo $telefono; ?>" required>
+                            <label for="">ARCHIVO</label> <br>
+                            
+                            <?php if (!empty($row['archivo'])) {
+                            echo '<a href="upload/' . $row['archivo'] . '" target="_blank">Descargar Archivo</a>';
+                            } ?>
+                            
                         </div>
                         <div class="form-group">
                             <label for="">CALIFICACION</label>
-                            <input type="text" class="form-control" name="calificacion" value="<?php echo $direccion; ?>" required>
+                            <input type="text" class="form-control" name="calificacion"  required>
                         </div>
                         <div class="form-group">
                             <label for="">COMENTARIO</label>
-                            <input type="text" class="form-control" name="comentario" value="<?php echo $correo; ?>" required>
+                            <input type="text" class="form-control" name="comentario"  required>
                         </div>
                     </div>
                     <div class="col-md-12">

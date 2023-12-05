@@ -1,6 +1,5 @@
 <?php
 include_once 'db/connect_db.php';
-include_once 'misc/plugin.php';
 session_start();
 
 if ($_SESSION['username'] == "") {
@@ -53,14 +52,20 @@ button: "Continuar",
     </style>
     <section class="content container-fluid">
         <div class="box box-success">
+       
             <div class="box-header with-border">
+            
                 <h3 class="box-title">LISTA DE ALUMNOS</h3>
                 <a href="agregar_alumno.php" class="btn btn-primary btn-sm pull-right"><i class="fa fa-bars"></i> AGREGAR ESTUDIANTE</a>
+                <a href="./misc/reporte_estudiante2.php" class="btn btn-danger btn-sm " title="REPORTE ESTUDIANTES INACTIVOS"><i class="fa fa-file-pdf-o"></i></a>
+                <a href="./misc/reporte_estudiantes.php" class="btn btn-success btn-sm " title="REPORTE ESTUDIANTES ACTIVOS"><i class="fa fa-file-pdf-o"></i></a> 
             </div>
             <div class="box-body">
-
+            
                 <div style="overflow-x:auto;">
+                
                     <table class="table table-striped" id="myProduct">
+                    
                         <thead>
                             <tr>
                                 <th>CEDULA</th>
@@ -110,14 +115,20 @@ button: "Continuar",
                                     </td>
                                     <td>
                                         <?php if ($_SESSION['role'] == "administrador") { ?>
-                                            <a href="devolver_estalum.php?id=<?php echo $row->id_Alumno; ?>"
-                                    class="btn btn-danger btn-sm" title="INACTIVAR ESTUDIANTE"><i class="fa fa-trash" ></i></a>
+                                            
+                                            
+                                <a href="devolver_estalum.php?id=<?php echo $row->id_Alumno; ?>"
+                                    class="btn btn-warning btn-sm" title="INACTIVAR ESTUDIANTE"><i class="fa fa-share" ></i></a>
                                             
                                             <a href="editar_alumno.php?id=<?php echo $row->id_Alumno; ?>"
                                                 class="btn btn-info btn-sm"  title="EDITAR ESTUDIANTE"><i class="fa fa-pencil"></i></a>
                                                 
                                                 <a href="ver_alumno.php?id=<?php echo $row->id_Alumno; ?>"
                                             class="btn btn-default btn-sm"  title="VER ESTUDIANTE"><i class="fa fa-eye"></i></a>
+                                            
+                                            <a href="eliminar_alumno.php?id=<?php echo $row->id_Alumno; ?>"
+                                            class="btn btn-danger btn-sm"  title="ELIMINAR ESTUDIANTE" onclick="return confirm('Esta seguro de eliminar el estudiante?')"><i class="fa fa-times-circle-o"></i></a>
+                                            
                                             <?php
                                         }
                                         ?>
