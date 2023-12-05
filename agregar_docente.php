@@ -40,7 +40,7 @@ if (isset($_POST['add_doc'])) {
         if ($select->rowCount() > 0) {
             echo '<script type="text/javascript">
                     jQuery(function validation(){
-                    swal("Warning", "Docente ya registrado", "warning", {
+                    swal("Advertencia", "Docente ya registrado", "warning", {
                     button: "Continuar",
                         });
                     });

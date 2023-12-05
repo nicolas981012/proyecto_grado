@@ -69,7 +69,7 @@ if (isset($_POST['add_actividad'])) {
                     if ($insert->execute()) {
                         echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Success", "actividad añadido con exito ", "success", {
+                                        swal("Correcto", "actividad añadido con exito ", "success", {
                                         button: "Continuar",
                                             });
                                         });
@@ -120,7 +120,7 @@ if (isset($_POST['add_actividad'])) {
         </h1>
         <br>
         <ol class="breadcrumb">
-            <li><a href="contenido.php"><i class="fa fa-dashboard"></i>LISTADO DE ACTIVIDADES</a></li>
+            
             <li class="active">AGREGAR ACTIVIDAD</li>
         </ol>
         <br>

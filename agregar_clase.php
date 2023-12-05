@@ -70,7 +70,7 @@ if (isset($_POST['add_clase'])) {
                     if ($insert->execute()) {
                         echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Success", "clase añadida con exitp", "success", {
+                                        swal("Correcto", "clase añadida con exitp", "success", {
                                         button: "Continuar",
                                             });
                                         });

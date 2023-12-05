@@ -46,7 +46,7 @@ if (isset($_POST['update_actividad'])) {
     if ($update->execute()) {
         echo '<script type="text/javascript">
         jQuery(function validation(){
-        swal("Success", "Actividad calificada con exito ", "success", {
+        swal("Correcto", "Actividad calificada con exito ", "success", {
         button: "Continuar",
             });
         });

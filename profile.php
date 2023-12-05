@@ -69,7 +69,7 @@ if (isset($_POST['btn_update'])) {
     } else {
       echo '<script type="text/javascript">
             jQuery(function validation(){
-              swal("Warning", "Confirma tu contraseña está mal ingresada", "warning", {
+              swal("Advertencia", "Confirma tu contraseña está mal ingresada", "warning", {
                 button: "Continue",
               });
             });
@@ -78,7 +78,7 @@ if (isset($_POST['btn_update'])) {
   } else {
     echo '<script type="text/javascript">
           jQuery(function validation(){
-            swal("Warning", "Tu contraseña está mal ingresada", "warning", {
+            swal("Advertencia", "Tu contraseña está mal ingresada", "warning", {
               button: "Continue",
             });
           });

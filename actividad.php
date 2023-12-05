@@ -55,7 +55,7 @@ button: "Continuar",
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">LISTA DE ACTIVIDADES</h3>
-                <a href="agregar_contenido.php" class="btn btn-primary btn-sm pull-right"><i class="fa fa-bars"></i> AGREGAR CLASE</a>
+                
             </div>
             <div class="box-body">
 

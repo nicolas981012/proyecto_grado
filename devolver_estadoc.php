@@ -25,7 +25,7 @@ if ($_SESSION['username'] == "") {
     if ($delete->execute()) {
         echo '<script type="text/javascript">
             jQuery(function validation(){
-            swal("Info", " Docente deshabilitado", "info", {
+            swal("Informacion", " Docente deshabilitado", "info", {
             button: "Continuar",
                 });
             });

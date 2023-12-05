@@ -67,7 +67,7 @@
                             if ($insert->execute()) {
                                 echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Success", "actividad entregada con exito ", "success", {
+                                        swal("Correcto", "actividad entregada con exito ", "success", {
                                         button: "Continuar",
                                             });
                                         });
@@ -84,7 +84,7 @@
                         } else {
                             echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Error", "OcurriO un error", "error", {
+                                        swal("Error", "Ocurrio un error", "error", {
                                         button: "Continuar",
                                             });
                                         });

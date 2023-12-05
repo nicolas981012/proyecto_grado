@@ -65,7 +65,7 @@ if (isset($_POST['add_contenido'])) {
                     if ($insert->execute()) {
                         echo '<script type="text/javascript">
                                         jQuery(function validation(){
-                                        swal("Success", "contenido añadido con exito ", "success", {
+                                        swal("Correcto", "contenido añadido con exito ", "success", {
                                         button: "Continuar",
                                             });
                                         });

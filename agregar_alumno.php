@@ -92,7 +92,7 @@ if (isset($_POST['add_alum'])) {
         </h1>
         <br>
         <ol class="breadcrumb">
-            <li><a href="cliente.php"><i class="fa fa-dashboard"></i>LISTADO ALUMNOS</a></li>
+            <li><a href="Alumnos.php"><i class="fa fa-dashboard"></i>LISTADO ALUMNOS</a></li>
             <li class="active">AGREGAR ALUMNO</li>
         </ol>
         <br>
